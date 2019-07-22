@@ -1,0 +1,10 @@
+<h1>Sessions:</h1>
+{% if session_list %}
+<ul>
+{% for session in session_list %}
+    <li>{{ session.title }}</li>
+{% endfor%}
+</ul>
+{% else %}
+<h2>No sessions recorded</h2>
+{% endif %}
