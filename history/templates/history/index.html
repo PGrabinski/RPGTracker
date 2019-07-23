@@ -1,10 +1,13 @@
+{% extends "history/basic.html" %}
+{% block content %}
 <h1>Sessions:</h1>
 {% if session_list %}
 <ul>
 {% for session in session_list %}
-    <li>{{ session.title }}</li>
+    <li><a href="{% url 'history:session_detail' session.id %}">{{ session.title }}</a></li>
 {% endfor%}
 </ul>
 {% else %}
 <h2>No sessions recorded</h2>
 {% endif %}
+{% endblock %}

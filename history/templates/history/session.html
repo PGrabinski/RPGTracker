@@ -1,0 +1,11 @@
+{% extends "history/basic.html" %}
+{% block content %}
+<h1>{{ session.title }}</h1>
+<h5>{{ session.game_date}}
+<h3>Characters</h3>
+<ul>
+{% for character in session.characters.all %}
+<li><a href="{% url 'history:character' character.id %}">{{character.name}}, {{character.career_path}}</li> 
+{% endfor%}
+</ul>
+{% endblock %}

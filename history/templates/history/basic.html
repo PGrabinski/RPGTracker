@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'history/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<menu class="navigation">
+<h1 class="page_title"><a href="{% url 'history:index' %}">RPG Tracker</a></h1>
+<p class="navis"><a href="{% url 'admin:index'%}">Administration</a><p>
+</menu>
+<body>
+<div id="content">
+{% block content %}
+{% endblock %}
+</div>
+</body>
