@@ -7,7 +7,7 @@
     height:75px;
     background: grey;
     display: grid;
-    grid-template-columns: 75% 25%;
+    grid-template-columns: 40% 25% 25% auto;
     vertical-align: center;
 }
 
