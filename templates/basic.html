@@ -3,24 +3,54 @@
 <!DOCTYPE html>
 <head>
 <html lang="en">
-<link rel="stylesheet" type="text/css" href="{% static 'history/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<menu class="navigation">
-<h1 class="page_title"><a href="{% url 'history:index' %}">RPG Tracker</a></h1>
+<nav class="nav-extended grey darken-3">
+    <div class="nav-wrapper">
+        <a href="{% url 'history:index' %}" class="brand-logo logo-font">RPG Tracker</a>
+      <ul class="right hide-on-med-and-down">
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% if user.is_staff%}
+                <li><a href="{% url 'admin:index'%}">Administration</a></li>
+            {% endif %}
+    {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register:signup' %}">Sign up</a></li>
+    {% endif %}
+      </ul>
+    </div>
+    <div class="nav-content">
+      <span class="nav-title">
+        {% block title%}
+        {% endblock %}
+      </span>
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light red dropdown-trigger" href="#" data-target="createdropdown">
+        <i class="material-icons">add</i>
+      </a>
+      <ul id="createdropdown" class="dropdown-content">
+        <li class="grey darken-3">Session</li>
+        <li class="grey darken-3">Character</li>
+      </ul>
+    </div>
+</nav>
 
-{% if user.is_authenticated %}
-    <a href="{% url 'logout' %}" class="navis">Logout</a>
-{% else %}
-    <a href="{% url 'login' %}" class="navis">Login</a>
-    <a href="{% url 'register:signup' %}" class="navis">Sign up</a>
-{% endif %}
-<p class="navis"><a href="{% url 'admin:index'%}">Administration</a><p>
-</menu>
-<body>
-<div id="content">
+<body class="grey lighten-1">
+<div id="content" class="content">
 {% block content %}
 {% endblock %}
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, {'cover_Trigger':true});
+  });
+
+</script>
 </body>
