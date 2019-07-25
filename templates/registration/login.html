@@ -1,9 +1,42 @@
 {% extends "basic.html" %}
+
+{% block title %}
+Login
+{% endblock  %}
+
 {% block content %}
-<h2>Login here</h2>
-<form method="POST">
+<form method="POST" id="login-form" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+    
+    <div class="row">
+        <div class="input-field col s6 offset-s3">
+            <input id="username" name="username" type="text" class="validate center-align">
+            <label for="username" class="red-text">Username</label>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="input-field col s6 offset-s3">
+            <input id="password" name="password" type="password" class="validate center-align">
+            <label for="password" class="red-text">Password</label>
+        </div>
+    </div>
+
+    <div class="row center-align">
+        <button type="submit" class="btn waves-effect waves-light red">Login</button>
+    </div>
+
+    <div class="row center-align">
+        {% if form.errors %}
+            <p class="red-text text-darken-2">Either username or password are invalid.</p>
+        {% endif %}
+    </div>
 </form>
+<script>
+  options = {}
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, options);
+  });
+</script>
 {% endblock %}

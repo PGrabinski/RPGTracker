@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
+
+
 <nav class="nav-extended grey darken-3">
     <div class="nav-wrapper">
         <a href="{% url 'history:index' %}" class="brand-logo logo-font">RPG Tracker</a>
@@ -23,8 +25,8 @@
     {% endif %}
       </ul>
     </div>
-    <div class="nav-content">
-      <span class="nav-title">
+    <div class="nav-content center-align">
+      <span class="nav-title logo-font">
         {% block title%}
         {% endblock %}
       </span>
@@ -32,25 +34,28 @@
         <i class="material-icons">add</i>
       </a>
       <ul id="createdropdown" class="dropdown-content">
-        <li class="grey darken-3">Session</li>
-        <li class="grey darken-3">Character</li>
+        <li class="grey darken-3"><a href="#" class="center-align white-text">Session</a></li>
+        <li class="grey darken-3"><a href="#" class="center-align white-text">Character</a></li>
       </ul>
     </div>
 </nav>
 
 <body class="grey lighten-1">
-<div id="content" class="content">
-{% block content %}
-{% endblock %}
-</div>
+  <div class="row">
+    <div class="col s8 offset-s2 center-align">
+      <div id="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.dropdown-trigger');
+      var instances = M.Dropdown.init(elems, {'cover_Trigger':true});
+    });
+  </script>
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, {'cover_Trigger':true});
-  });
-
-</script>
 </body>

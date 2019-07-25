@@ -1,12 +1,50 @@
 {% extends "basic.html" %}
 {% block title %}
-Sign up here
+Sign up
 {% endblock %}
 
 {% block content %}
-<form method="POST">
+<form method="POST" id="signup-form" action="{% url 'register:signup' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    
+    <div class="row">
+        <div class="input-field col s6 offset-s3">
+            <input id="username" name="username" type="text" class="validate center-align">
+            <label for="username" class="red-text">Username</label>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="input-field col s6 offset-s3">
+            <input id="password1" name="password1" type="password" class="validate center-align">
+            <label for="password1" class="red-text">Password</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6 offset-s3">
+            <input id="password2" name="password2" type="password" class="validate center-align">
+            <label for="password2" class="red-text">Repeat password</label>
+        </div>
+    </div>
+
+    <div class="row center-align">
+        <button type="submit" class="btn waves-effect waves-light red">Sign up</button>
+    </div>
+
+    <div class="row center-align">
+        {% if form.errors %}
+            <p>{{ form.errors}}</p>
+            {% comment %} <p class="red-text text-darken-2">Either username or password are invalid.</p> {% endcomment %}
+        {% endif %}
+    </div>
 </form>
+
+<script>
+  options = {}
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, options);
+  });
+</script>
 {% endblock %}
