@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_Model = 'history.Player'
+
 ROOT_URLCONF = 'RPG_tracker.urls'
 
 TEMPLATES = [

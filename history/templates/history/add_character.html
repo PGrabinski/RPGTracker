@@ -1,10 +1,10 @@
 {% extends "basic.html" %}
 {% block title %}
-Sign up
+Add character
 {% endblock %}
 
 {% block content %}
-<form method="POST" id="signup-form" action="{% url 'register:signup' %}">
+<form method="POST" id="add-character-form" action="{% url 'history:add_character' %}">
     {% csrf_token %}
     {% for field in form %}
     <div class="row">
@@ -16,7 +16,7 @@ Sign up
     {% endfor %}
 
     <div class="row center-align">
-        <button type="submit" class="btn waves-effect waves-light red">Sign up</button>
+        <button type="submit" class="btn waves-effect waves-light red">Add</button>
     </div>
 
     <div class="row center-align">
