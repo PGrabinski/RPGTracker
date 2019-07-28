@@ -1,6 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
 from history.models import Player
-# from pprint import pprint
 
 class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
